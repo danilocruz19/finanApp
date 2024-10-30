@@ -71,28 +71,6 @@ class _InitialScreenState extends State<InitialScreen> {
                 ),
               ),
             ),
-            Expanded(
-              flex: 0,
-              child: SizedBox(
-                width: 500,
-                height: 60,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      shape: ContinuousRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      backgroundColor: Colors.deepPurpleAccent),
-                  onPressed: () {},
-                  child: Text(
-                    "Ver relatório",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-              ),
-            )
           ],
         ));
   }

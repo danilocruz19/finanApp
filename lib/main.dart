@@ -1,3 +1,4 @@
+import 'package:financasapp/screens/relatorio.dart';
 import 'package:financasapp/screens/tela_inicial_doapp.dart';
 import 'package:flutter/material.dart';
 
@@ -11,22 +12,60 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(),
-        home: Scaffold(
+      title: 'Flutter Demo',
+      theme: ThemeData(),
+      home: DefaultTabController(
+        animationDuration: const Duration(milliseconds: 800),
+        length: 2,
+        child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.deepPurpleAccent,
             title: const Text(
               'FinaAPP',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w600
-              ),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
             centerTitle: true,
+            bottom: const TabBar(
+              tabs: [
+                Tab(
+                  icon: Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  child: Text(
+                    "Tela Inicial",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Tab(
+                  icon: Icon(
+                    Icons.stacked_line_chart,
+                    color: Colors.white,
+                  ),
+                  child: Text(
+                    "Relatório",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              ],
+              indicatorColor: Colors.white,
+              indicatorWeight: 8.0,
+            ),
           ),
-          body: const InitialScreen(),
+          body: const TabBarView(
+            children: [
+              InitialScreen(),
+              Relatorio()
+            ],
+          ),
           backgroundColor: Colors.white70.withOpacity(0.8),
-        ),);
+        ),
+      ),
+    );
   }
 }
