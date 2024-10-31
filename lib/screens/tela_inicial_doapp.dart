@@ -11,6 +11,12 @@ class InitialScreen extends StatefulWidget {
 }
 
 class _InitialScreenState extends State<InitialScreen> {
+  int saldo = 2133;
+  void atualizarSaldo(int novoSaldo){
+    setState(() {
+      saldo += novoSaldo;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     List<Widget> iconesFuncoes = [
@@ -29,7 +35,7 @@ class _InitialScreenState extends State<InitialScreen> {
            Navigator.push(
              context,
              MaterialPageRoute(
-               builder: (context) => EntradasFunc(),
+               builder: (context) => EntradasFunc(onSaldoChanged: atualizarSaldo,),
              ),
            );
          });
@@ -56,7 +62,10 @@ class _InitialScreenState extends State<InitialScreen> {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            CardInfos(),
+            CardInfos(
+              saldo: saldo,
+              onSaldoChanged: atualizarSaldo,
+            ),
             SizedBox(height: 20),
             Expanded(
               flex: 1,

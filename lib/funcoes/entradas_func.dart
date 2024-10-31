@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class EntradasFunc extends StatefulWidget {
-  const EntradasFunc({super.key});
+  final Function(int) onSaldoChanged;
+  const EntradasFunc({super.key, required this.onSaldoChanged});
 
   @override
   State<EntradasFunc> createState() => _EntradasFuncState();
@@ -67,7 +68,11 @@ class _EntradasFuncState extends State<EntradasFunc> {
                     padding: const EdgeInsets.fromLTRB(0, 200, 0, 0),
                     child: TextButton(
                       onPressed: () {
-                        print(_gastovalorController.text);
+                       if(_formKey.currentState!.validate()){
+                         int valor = int.tryParse(_gastovalorController.text) ?? 0;
+                         widget.onSaldoChanged(valor);
+                         Navigator.pop(context);
+                       }
                       },
                       child: Text("Registrar Entrada"),
                       style: TextButton.styleFrom(

@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class CardInfos extends StatefulWidget{
-  const CardInfos({super.key});
+
+  final int saldo;
+  final Function(int) onSaldoChanged;
+
+  const CardInfos({
+    super.key,
+    required this.saldo,
+    required this.onSaldoChanged,
+  });
 
   @override
   State<CardInfos> createState() => _CardInfosState();
@@ -18,7 +26,6 @@ class _CardInfosState extends State<CardInfos> {
 
   @override
   Widget build(BuildContext context) {
-    int saldo = 3582;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -67,7 +74,7 @@ class _CardInfosState extends State<CardInfos> {
                   Visibility(
                     visible: opacity,
                     child: Text(
-                      "R\$ ${formataNumero(saldo)}",
+                      "R\$ ${formataNumero(widget.saldo)}",
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w600,
