@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 
-class EntradasFunc extends StatelessWidget {
+class EntradasFunc extends StatefulWidget {
   const EntradasFunc({super.key});
 
   @override
+  State<EntradasFunc> createState() => _EntradasFuncState();
+}
+
+class _EntradasFuncState extends State<EntradasFunc> {
+  @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
+    TextEditingController _gastoController = TextEditingController();
+    TextEditingController _gastovalorController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
@@ -18,75 +27,59 @@ class EntradasFunc extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.deepPurpleAccent,
-          ),
-          width: 350,
-          height: 400,
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    labelText: 'Nome do item',
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 2,
-                        color: Colors.white
-                      )
-                    )
+      body: Form(
+        key: _formKey,
+        child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.deepPurpleAccent,
+            ),
+            width: 350,
+            height: 400,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: _gastoController,
+                    decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        labelText: 'Gasto',
+                        enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.white))),
                   ),
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      labelText: 'Nome do item',
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 2,
-                              color: Colors.white
-                          )
-                      )
+                  SizedBox(height: 10),
+                  TextFormField(
+                    controller: _gastovalorController,
+                    decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        filled: true,
+                        labelText: 'Valor Do Gasto',
+                        enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 2, color: Colors.white))),
+                    keyboardType: TextInputType.number,
                   ),
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      labelText: 'Nome do item',
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 2,
-                              color: Colors.white
-                          )
-                      )
-                  ),
-                ),
-                SizedBox(height: 10),
-                TextFormField(
-                  decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      labelText: 'Nome do item',
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 2,
-                              color: Colors.white
-                          )
-                      )
-                  ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 200, 0, 0),
+                    child: TextButton(
+                      onPressed: () {
+                        print(_gastovalorController.text);
+                      },
+                      child: Text("Registrar Entrada"),
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)
+                        )
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
