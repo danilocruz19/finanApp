@@ -8,6 +8,9 @@ class Relatorio extends StatefulWidget {
 }
 
 class _RelatorioState extends State<Relatorio> {
+
+  List<Widget> relatorioLista = [];
+
   @override
   Widget build(BuildContext context) {
     return Container(
