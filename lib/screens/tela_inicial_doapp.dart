@@ -1,6 +1,7 @@
 import 'package:financasapp/components/botoes_de_acoes.dart';
 import 'package:financasapp/components/card_principal_saldo.dart';
 import 'package:financasapp/funcoes/entradas_func.dart';
+import 'package:financasapp/funcoes/saidas_func.dart';
 import 'package:flutter/material.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -12,11 +13,13 @@ class InitialScreen extends StatefulWidget {
 
 class _InitialScreenState extends State<InitialScreen> {
   int saldo = 2133;
-  void atualizarSaldo(int novoSaldo){
+
+  void atualizarSaldo(int novoSaldo) {
     setState(() {
       saldo += novoSaldo;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     List<Widget> iconesFuncoes = [
@@ -31,14 +34,16 @@ class _InitialScreenState extends State<InitialScreen> {
       ),
       BotoesFuncoes(
         onPressed: () {
-         setState(() {
-           Navigator.push(
-             context,
-             MaterialPageRoute(
-               builder: (context) => EntradasFunc(onSaldoChanged: atualizarSaldo,),
-             ),
-           );
-         });
+          setState(() {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EntradasFunc(
+                  onSaldoChanged: atualizarSaldo,
+                ),
+              ),
+            );
+          });
         },
         icon: Icon(
           Icons.attach_money,
@@ -48,7 +53,12 @@ class _InitialScreenState extends State<InitialScreen> {
         text: 'Entradas',
       ),
       BotoesFuncoes(
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => SaidasFunc()));
+          });
+        },
         icon: Icon(
           Icons.money_off,
           color: Colors.white,

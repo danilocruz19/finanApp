@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class SaidasFunc extends StatefulWidget {
   const SaidasFunc({super.key});
 
@@ -8,6 +10,17 @@ class SaidasFunc extends StatefulWidget {
 class _SaidasFuncState extends State<SaidasFunc> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+      body: Container(
+        child: Center(
+          child: ElevatedButton(onPressed: () {
+            setState(() {
+
+            });
+          }, child: Text("-")),
+        ),
+      ),
+    );
   }
 }
