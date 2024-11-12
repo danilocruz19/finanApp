@@ -1,8 +1,13 @@
 import 'package:financasapp/Telas/home_screen.dart';
+import 'package:financasapp/providers/providers.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => Saldo(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
